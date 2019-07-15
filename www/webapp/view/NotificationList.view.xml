@@ -1,0 +1,36 @@
+<mvc:View controllerName="com.bp.MyNotifications.controller.NotificationList" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<List items="{path:'notifications>/results'}" headerText="Notifications for: {userapi>/name}">
+							<items>
+								<ObjectListItem title="{notifications>NotificationNo}" type="Navigation" press="handleListItemPress">
+									<firstStatus>
+										<ObjectStatus text="{notifications>NotificationStatusDesc}"/>
+									</firstStatus>
+									<attributes>
+										<ObjectAttribute text="{notifications>FuncLocation}"/>
+										<ObjectAttribute text="{notifications>CentralPlantDesc}"/>
+										<ObjectAttribute text="Priority: {notifications>Priority}"/>
+									</attributes>
+								</ObjectListItem>
+							</items>
+						</List>
+					</content>
+					<footer>
+					<Toolbar>
+					<Button text="Get Connection" press="checkConnection"/>
+					<HBox>
+						<Input id="InputDB"/>
+						<Button text="Save to DB" press="onSavePress"/>
+					</HBox>
+					<Button text="Get DB Content" press="onFetchPress"/>
+					</Toolbar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
